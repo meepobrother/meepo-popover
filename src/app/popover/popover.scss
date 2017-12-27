@@ -1,0 +1,16 @@
+popover-item {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 10;
+    background-color: #efefef;
+    flex-direction: column;
+    display: flex;
+    visibility: visible;
+    .core-popover_container {
+        flex: 1;
+        position: relative;
+    }
+}

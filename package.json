@@ -10,7 +10,7 @@
         "build": "bash ./build.sh",
         "git": "git add . && git commit -m 'save to back' && git push origin master",
         "test": "node index.js",
-        "demo": "ng serve",
+        "demo": "ng serve --port 4014 --open",
         "server": "pm2 start index.js --name meepo",
         "reload": "pm2 restart all && pm2 logs meepo",
         "delete": "pm2 delete all",
@@ -48,6 +48,7 @@
         "@angular/core": "5.2.0-beta.1",
         "@angular/forms": "5.2.0-beta.1",
         "@angular/platform-browser": "5.2.0-beta.1",
+        "meepo-uuid": "^1.0.8",
         "reflect-metadata": "^0.1.10",
         "rxjs": "^5.5.5",
         "zone.js": "0.8.4"

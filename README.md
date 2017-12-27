@@ -1,60 +1,62 @@
-## imeepos angular template
+## popover for angular
 
-```sh
-git remote add origin https://github.com/meepobrother/imeepos-ng-template.git
-git push -u origin master
-```
+```html
+<popover></popover>
 
+<ng-template #tpl let-sn>
+    <input class="weui-input" type="text" (change)="change($event)">
+    <a class="weui-btn weui-btn_primary" (click)="close(sn)">提交</a>
+</ng-template>
 
-### 用法
+<a (click)="push()" class="weui-btn weui-btn_primary" style="position: absolute;bottom:0px;left:0px;right:0px;">添加</a>
 
-```sh
-git clone https://github.com/meepobrother/imeepos-ng-template.git my-app
-cd my-app
-yarn 
-// 或者
-npm install
-```
-
-### 发布包到npm
-
-```ts
-// 删除mac自带后缀文件
-find ./ -name ".DS_Store" | xargs rm -rf
-// 1: 更改package.json中的name为要发布的名字
-npm run build && npm publish
-```
-
-### 使用发布的包
-
-```ts
-npm install --save 包名
 ```
 
 
 ```ts
-import { 模块 } from {包名}
-```
+import {
+  Component, OnInit, ChangeDetectionStrategy,
+  ChangeDetectorRef, ViewChild, TemplateRef
+} from '@angular/core';
+import { PopoverService } from 'meepo-popover';
 
-```ts
-"rollup": "^0.43.0",
-"rollup-plugin-commonjs": "^8.0.2",
-"rollup-plugin-includepaths": "0.2.2",
-"rollup-plugin-node-resolve": "^3.0.0"
-```
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AppComponent implements OnInit {
+  title = 'app';
+  id: number = 0;
+  value: string;
 
-- demo演示
+  @ViewChild('tpl') tpl: TemplateRef<any>;
+  constructor(
+    public cd: ChangeDetectorRef,
+    public popover: PopoverService
+  ) { }
 
-```
-yarn demo
-```
+  ngOnInit() { }
 
-- 后台相关
-```ts
-// 启动后台服务
-yarn server
-// 重启后台服务
-yarn reload
-// 清除进程
-yarn delete
+  push() {
+    this.id++;
+    let popover = this.popover.create(this.tpl);
+    popover.afterClose().subscribe(res => {
+      console.log('close', res);
+    });
+    popover.afterOpen().subscribe(res => {
+      console.log('open', res);
+    });
+  }
+
+  change(e: any) {
+    this.value = e.target.value;
+  }
+
+  close(e) {
+    this.popover.close(e, this.value);
+  }
+}
+
 ```
