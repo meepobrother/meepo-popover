@@ -1,3 +1,5 @@
 <div class="core-popover_container">
-    <ng-container *ngTemplateOutlet="_widget.widget.tpl;context: {$implicit: _widget}"></ng-container>
+    <xscroll style="height: 100%;" [full]="true" [hasMore]="false" [hasRefresh]="false">
+        <ng-container *ngTemplateOutlet="_widget.widget.tpl;context: {$implicit: _widget}"></ng-container>
+    </xscroll>
 </div>

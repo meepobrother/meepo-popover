@@ -26,4 +26,8 @@ export class PopoverItemComponent implements OnInit {
     ngOnInit() {
         this._widget.sure$.next(this._widget);
     }
+
+    onLoad(){
+        
+    }
 }

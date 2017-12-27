@@ -1,6 +1,6 @@
 {
     "name": "meepo-popover",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "popover for angular",
     "main": "./bundles/meepo.umd.js",
     "module": "./esm5/meepo.js",
@@ -48,7 +48,8 @@
         "@angular/core": "5.2.0-beta.1",
         "@angular/forms": "5.2.0-beta.1",
         "@angular/platform-browser": "5.2.0-beta.1",
-        "meepo-uuid": "^1.0.8",
+        "meepo-uuid": ">=1.0.8",
+        "meepo-xscroll": ">=1.2.9",
         "reflect-metadata": "^0.1.10",
         "rxjs": "^5.5.5",
         "zone.js": "0.8.4"

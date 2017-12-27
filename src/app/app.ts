@@ -4,12 +4,13 @@ import { PopoverComponent } from './popover/popover';
 import { PopoverItemComponent } from './popover/popover-item/popover-item';
 import { UuidModule } from 'meepo-uuid';
 import { PopoverService } from './popover.service';
+import { XscrollModule } from 'meepo-xscroll';
 @NgModule({
     declarations: [
         PopoverComponent,
         PopoverItemComponent
     ],
-    imports: [CommonModule, UuidModule],
+    imports: [CommonModule, UuidModule, XscrollModule],
     exports: [
         PopoverComponent,
         PopoverItemComponent
